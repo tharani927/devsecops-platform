@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.routes.health import router as health_router
 
 app = FastAPI(
     title="DevSecOps Secure Delivery Platform",
@@ -15,16 +16,12 @@ def root():
     }
 
 
-@app.get("/health")
-def health_check():
-    return {
-        "status": "healthy"
-    }
-
-
 @app.get("/security/status")
 def security_status():
     return {
         "security_pipeline": "active",
         "status": "secure"
     }
+
+
+app.include_router(health_router)
