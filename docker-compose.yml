@@ -1,0 +1,42 @@
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devsecops-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://devsecops:devsecops123@db:5432/devsecops
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - devsecops-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: devsecops-db
+    environment:
+      POSTGRES_USER: devsecops
+      POSTGRES_PASSWORD: devsecops123
+      POSTGRES_DB: devsecops
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devsecops -d devsecops"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - devsecops-network
+
+networks:
+  devsecops-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
