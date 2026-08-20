@@ -1,10 +1,22 @@
 services:
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: devsecops-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - devsecops-network
+
   api:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
-    container_name: devsecops-api
+    container_name: devsecops-backend
     ports:
       - "8000:8000"
     environment:

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSecOps Secure Delivery Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>DevSecOps Secure Delivery Platform</h1>
+            <p>Secure Software Delivery & Continuous Integration Platform</p>
+        </header>
+
+        <section class="status-card">
+            <h2>System Status</h2>
+
+            <div class="status">
+                <span class="dot"></span>
+                <span id="status">Checking backend...</span>
+            </div>
+
+            <button onclick="checkBackend()">
+                Check Backend
+            </button>
+        </section>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>🔐 Security</h3>
+                <p>Bandit security scanning and dependency vulnerability detection.</p>
+            </div>
+
+            <div class="card">
+                <h3>🐳 Docker</h3>
+                <p>Containerized application using Docker and Docker Compose.</p>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ CI/CD</h3>
+                <p>Automated testing and secure software delivery workflow.</p>
+            </div>
+
+            <div class="card">
+                <h3>🗄️ Database</h3>
+                <p>PostgreSQL database running as an isolated container.</p>
+            </div>
+
+        </section>
+
+        <section class="create-deployment">
+
+    <h2>Create Deployment</h2>
+
+    <form id="deploymentForm">
+
+        <input
+            type="text"
+            id="projectName"
+            placeholder="Project Name"
+            required
+        >
+
+        <select id="environment" required>
+            <option value="">Select Environment</option>
+            <option value="Development">Development</option>
+            <option value="Testing">Testing</option>
+            <option value="Production">Production</option>
+        </select>
+
+        <input
+            type="text"
+            id="version"
+            placeholder="Version (example: v1.0.0)"
+            required
+        >
+
+        <select id="deploymentStatus" required>
+            <option value="">Select Status</option>
+            <option value="Running">Running</option>
+            <option value="Success">Success</option>
+            <option value="Failed">Failed</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+        <select id="securityStatus" required>
+            <option value="">Security Status</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="Pending">Pending</option>
+        </select>
+
+        <button type="submit">
+            Create Deployment
+        </button>
+
+    </form>
+
+    <p id="deploymentMessage"></p>
+
+</section>
+        <section class="deployments-section">
+            <h2>🚀 Deployment History</h2>
+
+            <div id="deployments">
+                Loading deployments...
+            </div>
+        </section>
+
+        <section class="deployments-section">
+
+            <h2>Deployment History</h2>
+
+            <div id="deployments">
+                Loading deployments...
+            </div>
+        </section>
+
+        <footer>
+            <p>DevSecOps Platform | Secure • Automated • Containerized</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>dir
